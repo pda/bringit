@@ -3,7 +3,7 @@
 require(dirname(__FILE__).'/../include/init.php');
 
 $basedir = realpath(dirname(__FILE__).'/..');
-phool_unshift_include_path(array(
+Phool_ClassLoader::addIncludePath(array(
 	"$basedir/lib/simpletest",
 	"$basedir/tests"
 ));

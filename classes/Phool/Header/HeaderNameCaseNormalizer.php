@@ -3,10 +3,13 @@
 /**
  * Normalizes the capitalization of HTTP header names e.g. Content-Type.
  */
-class Phool_StringNormalizer_HeaderNameCaseNormalizer
-	implements Phool_StringNormalizer
+class Phool_Header_HeaderNameCaseNormalizer
 {
 
+	/**
+	 * @param string $string
+	 * @return string
+	 */
 	public function normalize($string)
 	{
 		return preg_replace_callback('#\w+#', array($this, '_callback'), $string);

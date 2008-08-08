@@ -1,15 +1,38 @@
 <?php
 
 /**
- * A collection of headers belonging to an HTTP request.
+ * A collection of headers belonging to an HTTP response.
  * Header names/keys are case insensitive and non-unique in the collection.
  */
-class Phool_Header_RequestHeaderCollection
+class Phool_Header_ResponseHeaderCollection
+	implements Phool_Header_HeaderCollection
 {
 
-	public function addHeader($name, $value)
+	private $_headers = array();
+
+	/**
+	 * @param Phool_Header[] $headers
+	 */
+	public function __construct($headers)
 	{
-		throw BadMethodCallException(__METHOD__ . ' not implemented');
+		$this->_headers = $headers;
+	}
+
+	/* (non-phpdoc)
+	 * @see Phool_Header_HeaderCollection::getHeaders()
+	 */
+	public function getHeaders()
+	{
+		return $this->_headers;
+	}
+
+	/* (non-phpdoc)
+	 * @see Phool_Header_HeaderCollection::__toString()
+	 */
+	public function __toString()
+	{
+		$serializer = new Phool_Header_HeaderSerializer($this);
+		return $serializer->serialize();
 	}
 
 }
