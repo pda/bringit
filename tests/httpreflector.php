@@ -46,5 +46,3 @@ while (true)
 }
 
 fclose($socket);
-
-?>

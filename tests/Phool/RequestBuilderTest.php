@@ -10,7 +10,9 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$method = Phool_Request::METHOD_PUT;
 		$url = new Phool_Url('http://example.org/');
 		$headerCollection = new Phool_Header_RequestHeaderCollection();
-		$entityBody = new Phool_EntityBody_SimpleEntityBody('', 'text/plain');
+
+		$entityBodyFactory = new Phool_EntityBodyFactory();
+		$entityBody = $entityBodyFactory->createFromString('', 'text/plain');
 
 		$builder
 			->setRequestMethod($method)

@@ -8,6 +8,13 @@ interface Phool_EntityBody
 {
 
 	/**
+	 * Whether the content of the EntityBody is encoded.
+	 * @see {@link http://tools.ietf.org/html/rfc1945#section-10.3}
+	 * @return bool
+	 */
+	public function hasContentEncoding();
+
+	/**
 	 * The encoding used for the content of the Entity-Body.
 	 * @see {@link http://tools.ietf.org/html/rfc1945#section-10.3}
 	 * @return string
@@ -29,22 +36,9 @@ interface Phool_EntityBody
 	public function getContentType();
 
 	/**
-	 * Whether the entity body has unread data remaining.
-	 * @return boolean
+	 * The file-stream of the EntityBody content.
+	 * @return resource stream
 	 */
-	public function hasData();
-
-	/**
-	 * Gets the next chunk of unread data. Returns null if no data remaining.
-	 * @return string
-	 */
-	public function getData();
-
-	/**
-	 * Rewinds to the original position in the data.
-	 */
-	public function rewindData();
+	public function getContentStream();
 
 }
-
-?>
