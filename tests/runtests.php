@@ -66,8 +66,8 @@ else
 	$test = new GroupTest('All Tests');
 	foreach (globr(dirname(__FILE__), '*Test.php') as $testFile)
 	{
-		if (!$withInternet && preg_match('#/InternetTest/#', $testFile)) continue;
-		if (!$withReflector && preg_match('#/HttpReflectorTest/#', $testFile)) continue;
+		if (!$withInternet && preg_match('#InternetTest[/\.]#', $testFile)) continue;
+		if (!$withReflector && preg_match('#ReflectorTest[/\.]#', $testFile)) continue;
 
 		$test->addTestFile($testFile);
 	}
