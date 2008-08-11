@@ -1,31 +1,30 @@
 <?php
 
 /**
- * A collection of headers belonging to an HTTP request.
- * Header names/keys are case insensitive and unique in the collection.
+ * A  of header fields belonging to an HTTP request.
+ * Header names/keys are case insensitive and unique in the .
  * Provides ArrayAccess for header name/value pairs.
  */
-class Phool_Header_RequestHeaderCollection
+class Phool_Header_RequestHeader
 	extends ArrayIterator
-	implements Phool_Header_HeaderCollection
 {
 
 	private $_headers = array();
 
-	/* (non-phpdoc)
-	 * @see Phool_Header_HeaderCollection::getHeaders()
+	/**
+	 * @return Phool_Header[]
 	 */
 	public function getHeaders()
 	{
 		return $this->_headers;
 	}
 
-	/* (non-phpdoc)
-	 * @see Phool_Header_HeaderCollection::__toString()
+	/**
+	 * @return string
 	 */
 	public function __toString()
 	{
-		$serializer = new Phool_Header_HeaderSerializer($this);
+		$serializer = new Phool_Header_RequestHeaderSerializer($this);
 		return $serializer->serialize();
 	}
 
@@ -39,7 +38,7 @@ class Phool_Header_RequestHeaderCollection
 	}
 
 	/**
-	 * Adds or overwrites a header in the collection with a new header.
+	 * Adds or overwrites a header in the  with a new header.
 	 * The header name is normalized and thus case insensitive.
 	 * @param string $name
 	 * @param string $value
@@ -95,7 +94,7 @@ class Phool_Header_RequestHeaderCollection
 		$name = $this->_normalizeHeaderName($offset);
 
 		if (!parent::offsetExists($name)) throw new Phool_Exception(
-			"Header '$name' not in collection"
+			"Header '$name' not in "
 		);
 
 		return parent::offsetGet($name);
@@ -105,7 +104,7 @@ class Phool_Header_RequestHeaderCollection
 	{
 		$name = $this->_normalizeHeaderName($offset);
 		$header = is_object($newval) ?
-			$newval : new Phool_Header_SimpleHeader($name, $newval);
+			$newval : new Phool_Header_HeaderField($name, $newval);
 		$value = $header->getValue();
 
 		$this->_headers[$name] = $header;
@@ -127,7 +126,7 @@ class Phool_Header_RequestHeaderCollection
 	 */
 	private function _normalizeHeaderName($name)
 	{
-		$normalizer = new Phool_Header_HeaderNameCaseNormalizer();
+		$normalizer = new Phool_Header_HeaderCaseNormalizer();
 		return $normalizer->normalize($name);
 	}
 

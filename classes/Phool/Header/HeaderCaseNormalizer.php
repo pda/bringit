@@ -3,7 +3,7 @@
 /**
  * Normalizes the capitalization of HTTP header names e.g. Content-Type.
  */
-class Phool_Header_HeaderNameCaseNormalizer
+class Phool_Header_HeaderCaseNormalizer
 {
 
 	/**

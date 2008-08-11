@@ -4,8 +4,8 @@
  * An entity body which uses a stream to get its body,
  * and does not support content encoding.
  */
-class Phool_SimpleEntityBody
-	implements Phool_EntityBody
+class Phool_Body_SimpleEntityBody
+	implements Phool_Body_EntityBody
 {
 
 	private $_stream;
@@ -24,7 +24,7 @@ class Phool_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_EntityBody::hasContentEncoding()
+	 * @see Phool_Body_EntityBody::hasContentEncoding()
 	 */
 	public function hasContentEncoding()
 	{
@@ -32,7 +32,7 @@ class Phool_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_EntityBody::getContentEncoding()
+	 * @see Phool_Body_EntityBody::getContentEncoding()
 	 */
 	public function getContentEncoding()
 	{
@@ -40,7 +40,7 @@ class Phool_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_EntityBody::getContentLength()
+	 * @see Phool_Body_EntityBody::getContentLength()
 	 */
 	public function getContentLength()
 	{
@@ -54,7 +54,7 @@ class Phool_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_EntityBody::getContentType()
+	 * @see Phool_Body_EntityBody::getContentType()
 	 */
 	public function getContentType()
 	{
@@ -62,7 +62,7 @@ class Phool_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_EntityBody::getContentStream()
+	 * @see Phool_Body_EntityBody::getContentStream()
 	 */
 	public function getContentStream()
 	{

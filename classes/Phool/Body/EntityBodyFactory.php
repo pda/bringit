@@ -3,7 +3,7 @@
 /**
  * Creates EntityBody instances from different types of content source.
  */
-class Phool_EntityBodyFactory
+class Phool_Body_EntityBodyFactory
 {
 
 	/**
@@ -13,7 +13,7 @@ class Phool_EntityBodyFactory
 	 */
 	public function createFromStream($contentStream, $contentType)
 	{
-		return new Phool_SimpleEntityBody($contentStream, $contentType);
+		return new Phool_Body_SimpleEntityBody($contentStream, $contentType);
 	}
 
 	/**

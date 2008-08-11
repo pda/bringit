@@ -1,13 +1,13 @@
 <?php
 
-class Phool_HeaderNameCaseNormalizerTest extends PhoolTestCase
+class Phool_HeaderCaseNormalizerTest extends PhoolTestCase
 {
 
 	private $_normalizer;
 
 	function setUp()
 	{
-		$this->_normalizer = new Phool_Header_HeaderNameCaseNormalizer();
+		$this->_normalizer = new Phool_Header_HeaderCaseNormalizer();
 	}
 
 	public function testNormalizeOneWord()

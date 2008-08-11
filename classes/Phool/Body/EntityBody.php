@@ -4,7 +4,7 @@
  * The body of an HTTP request.
  * @see {@link http://tools.ietf.org/html/rfc1945#section-7.2}
  */
-interface Phool_EntityBody
+interface Phool_Body_EntityBody
 {
 
 	/**

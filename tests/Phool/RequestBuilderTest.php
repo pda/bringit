@@ -9,15 +9,15 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 
 		$method = Phool_Request::METHOD_PUT;
 		$url = new Phool_Url('http://example.org/');
-		$headerCollection = new Phool_Header_RequestHeaderCollection();
+		$header = new Phool_Header_RequestHeader();
 
-		$entityBodyFactory = new Phool_EntityBodyFactory();
+		$entityBodyFactory = new Phool_Body_EntityBodyFactory();
 		$entityBody = $entityBodyFactory->createFromString('', 'text/plain');
 
 		$builder
 			->setRequestMethod($method)
 			->setUrl($url)
-			->setHeaderCollection($headerCollection)
+			->setHeader($header)
 			->setEntityBody($entityBody);
 
 		$request = $builder->createRequest();
@@ -26,7 +26,7 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 
 		$this->assertEqual($request->getRequestMethod(), $method);
 		$this->assertReference($request->getUrl(), $url);
-		$this->assertReference($request->getHeaderCollection(), $headerCollection);
+		$this->assertReference($request->getHeader(), $header);
 		$this->assertReference($request->getEntityBody(), $entityBody);
 	}
 

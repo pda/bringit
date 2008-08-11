@@ -8,7 +8,7 @@ class Phool_RequestBuilder
 
 	private $_requestMethod;
 	private $_url;
-	private $_headerCollection;
+	private $_header;
 	private $_entityBody;
 
 	/**
@@ -32,17 +32,17 @@ class Phool_RequestBuilder
 	}
 
 	/**
-	 * @param Phool_HeaderCollection
+	 * @param Phool_Header
 	 * @chainable
 	 */
-	public function setHeaderCollection($headerCollection)
+	public function setHeader($header)
 	{
-		$this->_headerCollection = $headerCollection;
+		$this->_header = $header;
 		return $this;
 	}
 
 	/**
-	 * @param Phool_EntityBody
+	 * @param Phool_Body_EntityBody
 	 * @chainable
 	 */
 	public function setEntityBody($entityBody)
@@ -57,10 +57,10 @@ class Phool_RequestBuilder
 	 */
 	public function createRequest()
 	{
-		return new Phool_SimpleRequest(
+		return new Phool_Request(
 			$this->_requestMethod,
 			$this->_url,
-			$this->_headerCollection,
+			$this->_header,
 			$this->_entityBody
 		);
 	}
