@@ -22,7 +22,7 @@ class Phool_Header_RequestHeaderSerializer
 	 */
 	public function serialize()
 	{
-		return implode('', $this->_header->getHeaders());
+		return implode('', $this->_header->getHeaders()) . "\r\n";
 	}
 
 }

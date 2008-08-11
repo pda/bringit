@@ -41,7 +41,7 @@ class Phool_RequestHeaderTest extends PhoolTestCase
 
 		$this->assertEqual(
 			"$header",
-			"One: I\r\nTwo: II\r\n"
+			"One: I\r\nTwo: II\r\n\r\n"
 		);
 	}
 

@@ -12,7 +12,7 @@ class Phool_RequestHeaderSerializer extends UnitTestCase
 		$serializer = new Phool_Header_RequestHeaderSerializer($header);
 		$this->assertEqual(
 			$serializer->serialize(),
-			"Content-Type: text/plain\r\nContent-Length: 123\r\n"
+			"Content-Type: text/plain\r\nContent-Length: 123\r\n\r\n"
 		);
 	}
 

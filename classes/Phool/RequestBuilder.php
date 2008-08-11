@@ -27,7 +27,7 @@ class Phool_RequestBuilder
 	 */
 	public function setUrl($url)
 	{
-		$this->_url = $url;
+		$this->_url = is_string($url) ? new Phool_Url($url) : $url;
 		return $this;
 	}
 

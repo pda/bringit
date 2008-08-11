@@ -9,34 +9,31 @@ class Phool_Body_EntityBodyFactory
 	/**
 	 * Creates an EntityBody using a stream as the content source.
 	 * @param resource $contentStream
-	 * @param string $contentType The content MIME type.
 	 */
-	public function createFromStream($contentStream, $contentType)
+	public function createFromStream($contentStream)
 	{
-		return new Phool_Body_SimpleEntityBody($contentStream, $contentType);
+		return new Phool_Body_SimpleEntityBody($contentStream);
 	}
 
 	/**
 	 * Creates an EntityBody from a string of content.
 	 * @param string $contentString
-	 * @param string $contentType The content MIME type.
 	 */
-	public function createFromString($contentString, $contentType)
+	public function createFromString($contentString)
 	{
 		$stream = fopen('php://memory', 'w');
 		fwrite($stream, $contentString);
 		rewind($stream);
-		return $this->createFromStream($stream, $contentType);
+		return $this->createFromStream($stream);
 	}
 
 	/**
 	 * Creates an EntityBody using a file as the content source.
 	 * @param string $filePath
-	 * @param string $contentType The content MIME type.
 	 */
-	public function createFromFile($filePath, $contentType)
+	public function createFromFile($filePath)
 	{
-		return $this->createFromStream(fopen($filePath, 'r'), $contentType);
+		return $this->createFromStream(fopen($filePath, 'r'));
 	}
 
 }

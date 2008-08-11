@@ -16,6 +16,8 @@ class Phool_Request
 	const METHOD_TRACE = 'TRACE';
 	const METHOD_CONNECT = 'CONNECT';
 
+	const HTTP_VERSION = '1.1';
+
 	private $_requestMethod;
 	private $_url;
 	private $_header;
@@ -33,6 +35,19 @@ class Phool_Request
 		$this->_url = $url;
 		$this->_header = $header;
 		$this->_entityBody = $entityBody;
+		$this->_setRequiredHeaders();
+	}
+
+	/**
+	 * @return Phool_Header_RequestLine
+	 */
+	public function getRequestLine()
+	{
+		return new Phool_Header_RequestLine(
+			$this->getRequestMethod(),
+			$this->getUrl()->getHostRelativeUrl(),
+			self::HTTP_VERSION
+		);
 	}
 
 	/**
@@ -44,7 +59,6 @@ class Phool_Request
 	{
 		return $this->_requestMethod;
 	}
-
 
 	/**
 	 * The URL addressing the resource to request.
@@ -83,4 +97,15 @@ class Phool_Request
 		return $this->_entityBody;
 	}
 
+	// ----------------------------------------
+
+	private function _setRequiredHeaders()
+	{
+		$header = $this->getHeader();
+
+		$header['Host'] = $this->getUrl()->getHostWithPort();
+
+		if ($this->hasEntityBody())
+			$header['Content-Length'] = $this->getEntityBody()->getContentLength();
+	}
 }

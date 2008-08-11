@@ -6,11 +6,9 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 	public function testStringEntityBodyBasicUsage()
 	{
 		$factory = new Phool_Body_EntityBodyFactory();
-		$body = $factory->createFromString('test content', 'text/plain');
+		$body = $factory->createFromString('test content');
 
-		$this->assertEqual($body->getContentType(), 'text/plain');
 		$this->assertEqual($body->getContentLength(), 12);
-		$this->assertFalse($body->hasContentEncoding(), 'body has no content encoding');
 	}
 
 	public function testSimpleEntityBodyBasicUsage()
@@ -20,10 +18,9 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		rewind($stream);
 
 		$factory = new Phool_Body_EntityBodyFactory();
-		$body = $factory->createFromStream($stream, 'text/plain');
+		$body = $factory->createFromStream($stream);
 
 		$this->assertEqual($body->getContentLength(), 16);
-		$this->assertEqual($body->getContentType(), 'text/plain');
 
 		$this->assertFalse(feof($body->getContentStream()), 'should not be EOF');
 		$this->assertEqual(fread($body->getContentStream(), 10), 'test strea');
@@ -42,10 +39,9 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		fseek($stream, 9, SEEK_SET);
 
 		$factory = new Phool_Body_EntityBodyFactory();
-		$body = $factory->createFromStream($stream, 'text/plain');
+		$body = $factory->createFromStream($stream);
 
 		$this->assertEqual($body->getContentLength(), 7);
-		$this->assertEqual($body->getContentType(), 'text/plain');
 
 		$this->assertEqual(fread($body->getContentStream(), 1024), 'am data');
 	}
