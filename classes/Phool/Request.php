@@ -94,6 +94,9 @@ class Phool_Request
 	 */
 	public function getEntityBody()
 	{
+		if (!$this->hasEntityBody())
+			throw new Phool_Exception('Request has no entity body');
+
 		return $this->_entityBody;
 	}
 
