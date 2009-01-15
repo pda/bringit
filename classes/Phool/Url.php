@@ -2,6 +2,9 @@
 
 /**
  * Encapsulates an HTTP or HTTPS URL parsed from a string.
+ *
+ * @author Paul Annesley <paul@annesley.cc>
+ * @licence http://www.opensource.org/licenses/mit-license.php
  */
 class Phool_Url
 {
