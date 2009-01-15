@@ -1,0 +1,15 @@
+Request
+	method
+	Url
+	RequestHeader
+		HeaderField
+	EntityBody
+
+Response
+	Request
+	ResponseHeader
+		ResponseStatusLine
+			http version
+			response code
+			reason phrase
+	EntityBody

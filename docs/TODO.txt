@@ -1,3 +1,4 @@
+ * Content Encoding
  * Cookies
  * Redirect Following
  * HTTP Authentication
