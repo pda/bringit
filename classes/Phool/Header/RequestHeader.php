@@ -1,8 +1,8 @@
 <?php
 
 /**
- * A  of header fields belonging to an HTTP request.
- * Header names/keys are case insensitive and unique in the .
+ * A collection of header fields belonging to an HTTP request.
+ * Header names/keys are case insensitive and unique in the collection.
  * Provides ArrayAccess for header name/value pairs.
  */
 class Phool_Header_RequestHeader

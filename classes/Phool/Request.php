@@ -70,7 +70,7 @@ class Phool_Request
 	}
 
 	/**
-	 * @return Phool_Header_Header
+	 * @return Phool_Header_RequestHeader
 	 */
 	public function getHeader()
 	{

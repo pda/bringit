@@ -21,15 +21,6 @@ class Phool_Header_ResponseHeader
 	}
 
 	/**
-	 * Whether the  contains an HTTP response status line.
-	 * @see http://tools.ietf.org/html/rfc2616#section-6.1
-	 * @return bool
-	 */
-	public function hasStatusLine()
-	{
-
-	}
-	/**
 	 * The HTTP response status line.
 	 * @see http://tools.ietf.org/html/rfc2616#section-6.1
 	 * @return Phool_Header_ResponseStatusLine

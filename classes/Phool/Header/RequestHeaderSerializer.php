@@ -9,7 +9,7 @@ class Phool_Header_RequestHeaderSerializer
 	private $_header;
 
 	/**
-	 * @param Phool_Header_Header
+	 * @param Phool_Header_RequestHeader
 	 */
 	public function __construct($requestHeader)
 	{
