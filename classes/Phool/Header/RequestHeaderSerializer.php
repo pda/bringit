@@ -5,7 +5,6 @@
  */
 class Phool_Header_RequestHeaderSerializer
 {
-
 	private $_header;
 
 	/**
@@ -24,5 +23,4 @@ class Phool_Header_RequestHeaderSerializer
 	{
 		return implode('', $this->_header->getHeaders()) . "\r\n";
 	}
-
 }

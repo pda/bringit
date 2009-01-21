@@ -5,7 +5,6 @@
  */
 class Phool_ClassLoader
 {
-
 	/**
 	 * Registers this class as an SPL class loader.
 	 */

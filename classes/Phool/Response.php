@@ -6,10 +6,10 @@
  */
 class Phool_Response
 {
-
-	private $_request;
-	private $_header;
-	private $_entityBody;
+	private
+		$_request,
+		$_header;
+		$_entityBody;
 
 	/**
 	 * @param Phool_Url $request

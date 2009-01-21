@@ -2,7 +2,6 @@
 
 class Phool_UrlTest extends PhoolTestCase
 {
-
 	private $_sampleData = array(
 		'scheme' => 'http',
 		'host' => 'example.org',
@@ -185,5 +184,4 @@ class Phool_UrlTest extends PhoolTestCase
 		$this->assertEqual($url->getFragmentString(), $expected['fragment']);
 		$this->assertEqual($url->getPort(), $expected['port']);
 	}
-
 }

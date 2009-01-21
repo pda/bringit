@@ -5,11 +5,11 @@
  */
 class Phool_RequestBuilder
 {
-
-	private $_requestMethod = Phool_Request::METHOD_GET;
-	private $_url;
-	private $_header;
-	private $_entityBody;
+	private
+		$_requestMethod = Phool_Request::METHOD_GET,
+		$_url,
+		$_header,
+		$_entityBody;
 
 	/**
 	 * @param Phool_RequestMethod

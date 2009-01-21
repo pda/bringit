@@ -6,9 +6,9 @@
  */
 class Phool_Header_ResponseHeader
 {
-
-	private $_headers = array();
-	private $_statusLine;
+	private
+		$_headers = array(),
+		$_statusLine;
 
 	/**
 	 * @param Phool_Header_ResponseStatusLine, may be null
@@ -37,5 +37,4 @@ class Phool_Header_ResponseHeader
 	{
 		return $this->_headers;
 	}
-
 }

@@ -2,7 +2,6 @@
 
 class Phool_RequestHeaderSerializer extends UnitTestCase
 {
-
 	public function testBasicSerialization()
 	{
 		$header = new Phool_Header_RequestHeader();
@@ -15,5 +14,4 @@ class Phool_RequestHeaderSerializer extends UnitTestCase
 			"Content-Type: text/plain\r\nContent-Length: 123\r\n\r\n"
 		);
 	}
-
 }

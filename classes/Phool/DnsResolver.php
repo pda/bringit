@@ -5,7 +5,6 @@
  */
 class Phool_DnsResolver
 {
-
 	/**
 	 * Resolves a hostname to one or more IP addresses.
 	 * @param string $hostname

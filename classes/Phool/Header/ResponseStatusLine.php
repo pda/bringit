@@ -6,10 +6,10 @@
  */
 class Phool_Header_ResponseStatusLine
 {
-
-	private $_httpVersion;
-	private $_responseCode;
-	private $_reasonPhrase;
+	private
+		$_httpVersion,
+		$_responseCode,
+		$_reasonPhrase;
 
 	/**
 	 * @param string $httpVersion
@@ -73,5 +73,4 @@ class Phool_Header_ResponseStatusLine
 		list(, $httpVersion, $statusCode, $reasonPhrase) = $matches;
 		return new self($httpVersion, $statusCode, $reasonPhrase);
 	}
-
 }

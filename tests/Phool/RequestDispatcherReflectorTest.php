@@ -2,7 +2,6 @@
 
 class Phool_RequestDispatcherReflectorTest extends UnitTestCase
 {
-
 	const TESTHOST = 'localhost:10080';
 
 	public function testDispatchBasicGetRequest()
@@ -60,5 +59,4 @@ class Phool_RequestDispatcherReflectorTest extends UnitTestCase
 			$responseBody
 		);
 	}
-
 }

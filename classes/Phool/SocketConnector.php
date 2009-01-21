@@ -5,7 +5,6 @@
  */
 class Phool_SocketConnector
 {
-
 	const SOCKET_TIMEOUT_OPEN = 20;
 	const FREAD_CHUNKSIZE = 1024;
 

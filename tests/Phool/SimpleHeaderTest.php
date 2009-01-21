@@ -2,7 +2,6 @@
 
 class Phool_HeaderFieldTest extends PhoolTestCase
 {
-
 	public function testHeaderField()
 	{
 		$header = new Phool_Header_HeaderField('Host', 'example.org');
@@ -34,5 +33,4 @@ class Phool_HeaderFieldTest extends PhoolTestCase
 			$string
 		);
 	}
-
 }

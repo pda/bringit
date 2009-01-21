@@ -5,7 +5,6 @@
  */
 class Phool_Body_EntityBodyFactory
 {
-
 	/**
 	 * Creates an EntityBody using a stream as the content source.
 	 * @param resource $contentStream
@@ -35,5 +34,4 @@ class Phool_Body_EntityBodyFactory
 	{
 		return $this->createFromStream(fopen($filePath, 'r'));
 	}
-
 }

@@ -2,7 +2,6 @@
 
 class Phool_ResponseStatusLineTest extends PhoolTestCase
 {
-
 	public function testBasicUsage()
 	{
 		$string = "HTTP/1.1 404 Not Found\r\n";
@@ -12,5 +11,4 @@ class Phool_ResponseStatusLineTest extends PhoolTestCase
 			$string
 		);
 	}
-
 }

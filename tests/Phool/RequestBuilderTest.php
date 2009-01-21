@@ -2,7 +2,6 @@
 
 class Phool_RequestBuilderTest extends PhoolTestCase
 {
-
 	public function testBasicGetRequest()
 	{
 		$builder = new Phool_RequestBuilder();
@@ -63,5 +62,4 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$this->assertEqual($request->getRequestLine()->__toString(), "PUT /blarg HTTP/1.1\r\n");
 		$this->assertEqual($header['Host'], 'example.org:81');
 	}
-
 }

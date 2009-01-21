@@ -2,7 +2,6 @@
 
 class Phool_ResponseHeaderParserTest extends PhoolTestCase
 {
-
 	public function testParseFromString()
 	{
 		$parser = new Phool_Header_ResponseHeaderParser();
@@ -20,5 +19,4 @@ class Phool_ResponseHeaderParserTest extends PhoolTestCase
 		$this->assertEqual($status->getReasonPhrase(), 'OK');
 		$this->assertEqual($status->__toString(), "HTTP/1.1 200 OK\r\n");
 	}
-
 }

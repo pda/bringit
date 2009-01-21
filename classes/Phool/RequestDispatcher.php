@@ -2,7 +2,6 @@
 
 class Phool_RequestDispatcher
 {
-
 	/**
 	 * @param Phool_Request
 	 * @return Phool_Response

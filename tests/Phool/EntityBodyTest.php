@@ -2,7 +2,6 @@
 
 class Phool_Body_EntityBodyTest extends UnitTestCase
 {
-
 	public function testStringEntityBodyBasicUsage()
 	{
 		$factory = new Phool_Body_EntityBodyFactory();
@@ -45,5 +44,4 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 
 		$this->assertEqual(fread($body->getContentStream(), 1024), 'am data');
 	}
-
 }

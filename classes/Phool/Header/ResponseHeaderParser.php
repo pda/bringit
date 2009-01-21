@@ -5,7 +5,6 @@
  */
 class Phool_Header_ResponseHeaderParser
 {
-
 	/**
 	 * @param mixed
 	 * @return Phool_Header_ResponseHeader
@@ -83,5 +82,4 @@ class Phool_Header_ResponseHeaderParser
 			return false;
 		}
 	}
-
 }

@@ -5,7 +5,6 @@
  */
 class Phool_Header_HeaderCaseNormalizer
 {
-
 	/**
 	 * @param string $string
 	 * @return string
@@ -22,5 +21,4 @@ class Phool_Header_HeaderCaseNormalizer
 	{
 		return ucwords($matches[0]);
 	}
-
 }

@@ -6,7 +6,6 @@
  */
 class Phool_Request
 {
-
 	const METHOD_OPTIONS = 'OPTIONS';
 	const METHOD_GET = 'GET';
 	const METHOD_HEAD = 'HEAD';
@@ -18,10 +17,11 @@ class Phool_Request
 
 	const HTTP_VERSION = '1.1';
 
-	private $_requestMethod;
-	private $_url;
-	private $_header;
-	private $_entityBody;
+	private
+		$_requestMethod,
+		$_url,
+		$_header,
+		$_entityBody;
 
 	/**
 	 * @param string $requestMethod

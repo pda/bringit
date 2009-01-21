@@ -2,7 +2,6 @@
 
 class Phool_DnsResolverTest extends UnitTestCase
 {
-
 	public function testGetHostByName()
 	{
 		$resolver = new Phool_DnsResolver();
@@ -20,5 +19,4 @@ class Phool_DnsResolverTest extends UnitTestCase
 			array('127.0.0.1')
 		);
 	}
-
 }

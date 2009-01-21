@@ -14,11 +14,11 @@
  */
 class Phool_Header_HeaderField
 {
-
 	const CRLF = "\r\n";
 
-	private $_name;
-	private $_value;
+	private
+		$_name,
+		$_value;
 
 	/**
 	 * @param string $name
@@ -74,5 +74,4 @@ class Phool_Header_HeaderField
 		list($name, $value) = explode(': ', trim($headerString), 2);
 		return new self($name, $value);
 	}
-
 }

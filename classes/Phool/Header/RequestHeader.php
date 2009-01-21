@@ -8,7 +8,6 @@
 class Phool_Header_RequestHeader
 	extends ArrayIterator
 {
-
 	private $_headers = array();
 
 	/**
@@ -129,5 +128,4 @@ class Phool_Header_RequestHeader
 		$normalizer = new Phool_Header_HeaderCaseNormalizer();
 		return $normalizer->normalize($name);
 	}
-
 }

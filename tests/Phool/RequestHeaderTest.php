@@ -2,7 +2,6 @@
 
 class Phool_RequestHeaderTest extends PhoolTestCase
 {
-
 	public function testRequestHeader()
 	{
 		$header = new Phool_Header_RequestHeader();
@@ -88,5 +87,4 @@ class Phool_RequestHeaderTest extends PhoolTestCase
 		}
 		$this->assertEqual($count, 2);
 	}
-
 }

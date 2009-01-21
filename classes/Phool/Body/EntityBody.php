@@ -6,7 +6,6 @@
  */
 interface Phool_Body_EntityBody
 {
-
 	/**
 	 * The size of the Entity-Body, in decimal number of octets.
 	 * @see {@link http://tools.ietf.org/html/rfc1945#section-10.4}
@@ -19,5 +18,4 @@ interface Phool_Body_EntityBody
 	 * @return resource stream
 	 */
 	public function getContentStream();
-
 }

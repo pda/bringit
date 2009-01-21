@@ -2,7 +2,6 @@
 
 class Phool_HeaderCaseNormalizerTest extends PhoolTestCase
 {
-
 	private $_normalizer;
 
 	function setUp()
@@ -33,5 +32,4 @@ class Phool_HeaderCaseNormalizerTest extends PhoolTestCase
 			'One-Two-Three-Four-Five'
 		);
 	}
-
 }

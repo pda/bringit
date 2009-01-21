@@ -6,10 +6,10 @@
  */
 class Phool_Header_RequestLine
 {
-
-	private $_requestMethod;
-	private $_requestUri;
-	private $_httpVersion;
+	private
+		$_requestMethod,
+		$_requestUri,
+		$_httpVersion;
 
 	/**
 	 * @param string $requestMethod
@@ -73,5 +73,4 @@ class Phool_Header_RequestLine
 		list(, $requestMethod, $requestUrl, $httpVersion) = $matches;
 		return new self($requestMethod, $requestUrl, $httpVersion);
 	}
-
 }

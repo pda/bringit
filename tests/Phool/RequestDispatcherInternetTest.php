@@ -2,7 +2,6 @@
 
 class Phool_RequestDispatcherInternetTest extends UnitTestCase
 {
-
 	const TESTHOST = 'www.example.org';
 
 	public function testDispatchBasicGetRequest()
@@ -50,5 +49,4 @@ class Phool_RequestDispatcherInternetTest extends UnitTestCase
 			$responseBody
 		);
 	}
-
 }

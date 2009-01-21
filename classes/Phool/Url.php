@@ -8,9 +8,9 @@
  */
 class Phool_Url
 {
-
-	private $_inputString;
-	private $_fragments;
+	private
+		$_inputString,
+		$_fragments;
 
 	/**
 	 * @param string $urlString

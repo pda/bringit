@@ -7,10 +7,10 @@
 class Phool_Body_SimpleEntityBody
 	implements Phool_Body_EntityBody
 {
-
-	private $_stream;
-	private $_memoryStream;
-	private $_initialPosition;
+	private
+		$_stream,
+		$_memoryStream,
+		$_initialPosition;
 
 	/**
 	 * @param string $content The content
@@ -76,5 +76,4 @@ class Phool_Body_SimpleEntityBody
 		fseek($this->_stream, $pos, SEEK_SET);
 		return $string;
 	}
-
 }
