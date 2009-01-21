@@ -1,0 +1,42 @@
+An attempt to group functionality into layers, with exclusively
+"downward" dependency.
+
+
+Convenience Wrappers
+------------------------------
+High level wrappers / facades on combined functionality.
+
+Content Encoding
+------------------------------
+Encoding and decoding of request/response entity bodies.
+
+Caching
+------------------------------
+Interpretation of request and response cache directives.
+Pluggable persistence of cacheable HTTP resources.
+
+Redirect Following
+------------------------------
+Follow redirects, tracking the original request and the
+cacheable URL of the HTTP session.
+
+HTTP Authentication
+------------------------------
+Management of credentials, with pluggable credential sources.
+Sending of auth headers in request to correct domains.
+
+Cookie State Persistence
+------------------------------
+Interpreting cookie directives and matching domains/paths.
+Pluggable cookie store.
+Sending of cookie headers in request.
+
+HTTPS support
+------------------------------
+OpenSSL integration, encrypted connections.
+Certificate verification, pluggable certificate sources.
+
+Core HTTP components
+------------------------------
+Request, Response, Connector, Dispatcher etc.
+
