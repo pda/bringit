@@ -6,6 +6,11 @@ Convenience Wrappers
 ------------------------------
 High level wrappers / facades on combined functionality.
 
+User Agent
+------------------------------
+Ties together "browsing session" aspects.
+e.g cookies, caching, redirect handling.
+
 Content Encoding
 ------------------------------
 Encoding and decoding of request/response entity bodies.
