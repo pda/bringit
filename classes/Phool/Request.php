@@ -41,11 +41,11 @@ class Phool_Request
 	/**
 	 * @return Phool_Header_RequestLine
 	 */
-	public function getRequestLine()
+	public function requestLine()
 	{
 		return new Phool_Header_RequestLine(
-			$this->getRequestMethod(),
-			$this->getUrl()->getHostRelativeUrl(),
+			$this->requestMethod(),
+			$this->url()->hostRelativeUrl(),
 			self::HTTP_VERSION
 		);
 	}
@@ -55,7 +55,7 @@ class Phool_Request
 	 * @see http://tools.ietf.org/html/rfc2616#section-5.1.1
 	 * @return Phool_RequestMethod
 	 */
-	public function getRequestMethod()
+	public function requestMethod()
 	{
 		return $this->_requestMethod;
 	}
@@ -64,7 +64,7 @@ class Phool_Request
 	 * The URL addressing the resource to request.
 	 * @return Phool_Url
 	 */
-	public function getUrl()
+	public function url()
 	{
 		return $this->_url;
 	}
@@ -72,7 +72,7 @@ class Phool_Request
 	/**
 	 * @return Phool_Header_RequestHeader
 	 */
-	public function getHeader()
+	public function header()
 	{
 		return $this->_header;
 	}
@@ -92,7 +92,7 @@ class Phool_Request
 	 * @see http://tools.ietf.org/html/rfc2616#section-7.2
 	 * @return Phool_Body_EntityBody
 	 */
-	public function getEntityBody()
+	public function entityBody()
 	{
 		if (!$this->hasEntityBody())
 			throw new Phool_Exception('Request has no entity body');
@@ -104,11 +104,11 @@ class Phool_Request
 
 	private function _setRequiredHeaders()
 	{
-		$header = $this->getHeader();
+		$header = $this->header();
 
-		$header['Host'] = $this->getUrl()->getHostWithPort();
+		$header['Host'] = $this->url()->hostWithPort();
 
 		if ($this->hasEntityBody())
-			$header['Content-Length'] = $this->getEntityBody()->getContentLength();
+			$header['Content-Length'] = $this->entityBody()->contentLength();
 	}
 }

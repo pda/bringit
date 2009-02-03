@@ -21,6 +21,6 @@ class Phool_Header_RequestHeaderSerializer
 	 */
 	public function serialize()
 	{
-		return implode('', $this->_header->getHeaders()) . "\r\n";
+		return implode('', $this->_header->headers()) . "\r\n";
 	}
 }

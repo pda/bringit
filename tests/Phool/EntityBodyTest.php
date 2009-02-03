@@ -7,7 +7,7 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		$factory = new Phool_Body_EntityBodyFactory();
 		$body = $factory->createFromString('test content');
 
-		$this->assertEqual($body->getContentLength(), 12);
+		$this->assertEqual($body->contentLength(), 12);
 	}
 
 	public function testSimpleEntityBodyBasicUsage()
@@ -19,16 +19,16 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		$factory = new Phool_Body_EntityBodyFactory();
 		$body = $factory->createFromStream($stream);
 
-		$this->assertEqual($body->getContentLength(), 16);
+		$this->assertEqual($body->contentLength(), 16);
 
-		$this->assertFalse(feof($body->getContentStream()), 'should not be EOF');
-		$this->assertEqual(fread($body->getContentStream(), 10), 'test strea');
-		$this->assertEqual(fread($body->getContentStream(), 10), 'm data');
-		$this->assertTrue(feof($body->getContentStream()), 'should be EOF');
+		$this->assertFalse(feof($body->contentStream()), 'should not be EOF');
+		$this->assertEqual(fread($body->contentStream(), 10), 'test strea');
+		$this->assertEqual(fread($body->contentStream(), 10), 'm data');
+		$this->assertTrue(feof($body->contentStream()), 'should be EOF');
 
-		rewind($body->getContentStream());
-		$this->assertFalse(feof($body->getContentStream()), 'should not be EOF');
-		$this->assertEqual(fread($body->getContentStream(), 1024), 'test stream data');
+		rewind($body->contentStream());
+		$this->assertFalse(feof($body->contentStream()), 'should not be EOF');
+		$this->assertEqual(fread($body->contentStream(), 1024), 'test stream data');
 	}
 
 	public function testSimpleEntityBodyMidStream()
@@ -40,8 +40,8 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		$factory = new Phool_Body_EntityBodyFactory();
 		$body = $factory->createFromStream($stream);
 
-		$this->assertEqual($body->getContentLength(), 7);
+		$this->assertEqual($body->contentLength(), 7);
 
-		$this->assertEqual(fread($body->getContentStream(), 1024), 'am data');
+		$this->assertEqual(fread($body->contentStream(), 1024), 'am data');
 	}
 }

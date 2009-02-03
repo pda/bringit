@@ -27,7 +27,7 @@ class Phool_Response
 	 * The original request.
 	 * @return Phool_Request
 	 */
-	public function getRequest()
+	public function request()
 	{
 		return $this->_request;
 	}
@@ -35,7 +35,7 @@ class Phool_Response
 	/**
 	 * @return Phool_Header_ResponseHeader
 	 */
-	public function getResponseHeader()
+	public function responseHeader()
 	{
 		return $this->_header;
 	}
@@ -55,7 +55,7 @@ class Phool_Response
 	 * @see http://tools.ietf.org/html/rfc2616#section-7.2
 	 * @return Phool_Body_EntityBody
 	 */
-	public function getEntityBody()
+	public function entityBody()
 	{
 		return $this->_entityBody;
 	}

@@ -26,7 +26,7 @@ class Phool_Header_ResponseStatusLine
 	/**
 	 * @return string
 	 */
-	public function getHttpVersion()
+	public function httpVersion()
 	{
 		return $this->_httpVersion;
 	}
@@ -34,7 +34,7 @@ class Phool_Header_ResponseStatusLine
 	/**
 	 * @return int
 	 */
-	public function getResponseCode()
+	public function responseCode()
 	{
 		return $this->_responseCode;
 	}
@@ -42,7 +42,7 @@ class Phool_Header_ResponseStatusLine
 	/**
 	 * @return string
 	 */
-	public function getReasonPhrase()
+	public function reasonPhrase()
 	{
 		return $this->_reasonPhrase;
 	}
@@ -53,9 +53,9 @@ class Phool_Header_ResponseStatusLine
 	public function __toString()
 	{
 		return sprintf("HTTP/%s %d %s\r\n",
-			$this->getHttpVersion(),
-			$this->getResponseCode(),
-			$this->getReasonPhrase()
+			$this->httpVersion(),
+			$this->responseCode(),
+			$this->reasonPhrase()
 		);
 	}
 

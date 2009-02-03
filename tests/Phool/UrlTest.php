@@ -15,15 +15,15 @@ class Phool_UrlTest extends PhoolTestCase
 	{
 		$url = new Phool_Url('http://example.org:80/path?a=b&c=d#fragment');
 		$this->_assertExpectedValues($url);
-		$this->assertEqual($url->getHostRelativeUrl(), '/path?a=b&c=d#fragment');
-		$this->assertEqual($url->getSchemeRelativeUrl(), '//example.org/path?a=b&c=d#fragment');
+		$this->assertEqual($url->hostRelativeUrl(), '/path?a=b&c=d#fragment');
+		$this->assertEqual($url->schemeRelativeUrl(), '//example.org/path?a=b&c=d#fragment');
 	}
 
 	public function testBriefHttpUrlUsage()
 	{
 		$url = new Phool_Url('http://example.org/');
-		$this->assertEqual($url->getHostRelativeUrl(), '/');
-		$this->assertEqual($url->getSchemeRelativeUrl(), '//example.org/');
+		$this->assertEqual($url->hostRelativeUrl(), '/');
+		$this->assertEqual($url->schemeRelativeUrl(), '//example.org/');
 	}
 
 	public function testHasMethods()
@@ -50,17 +50,17 @@ class Phool_UrlTest extends PhoolTestCase
 		$url = new Phool_Url('/');
 
 		try {
-			$url->getScheme();
-			$this->fail('getScheme() should throw exception');
+			$url->scheme();
+			$this->fail('scheme() should throw exception');
 		} catch (Phool_Exception $e) {
-			$this->pass('getScheme() should throw exception');
+			$this->pass('scheme() should throw exception');
 		}
 
 		try {
-			$url->getHost();
-			$this->fail('getHost() should throw exception');
+			$url->host();
+			$this->fail('host() should throw exception');
 		} catch (Phool_Exception $e) {
-			$this->pass('getHost() should throw exception');
+			$this->pass('host() should throw exception');
 		}
 
 	}
@@ -119,7 +119,7 @@ class Phool_UrlTest extends PhoolTestCase
 	public function testWithoutPath()
 	{
 		$url = new Phool_Url('http://example.org');
-		$this->assertEqual($url->getPath(), '/');
+		$this->assertEqual($url->path(), '/');
 	}
 
 	public function testSerializeToString()
@@ -177,11 +177,11 @@ class Phool_UrlTest extends PhoolTestCase
 	{
 		$expected = array_merge($this->_sampleData, $custom);
 
-		$this->assertEqual($url->getScheme(), $expected['scheme']);
-		$this->assertEqual($url->getHost(), $expected['host']);
-		$this->assertEqual($url->getPath(), $expected['path']);
-		$this->assertEqual($url->getQueryString(), $expected['querystring']);
-		$this->assertEqual($url->getFragmentString(), $expected['fragment']);
-		$this->assertEqual($url->getPort(), $expected['port']);
+		$this->assertEqual($url->scheme(), $expected['scheme']);
+		$this->assertEqual($url->host(), $expected['host']);
+		$this->assertEqual($url->path(), $expected['path']);
+		$this->assertEqual($url->queryString(), $expected['querystring']);
+		$this->assertEqual($url->fragmentString(), $expected['fragment']);
+		$this->assertEqual($url->port(), $expected['port']);
 	}
 }

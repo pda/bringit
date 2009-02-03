@@ -35,7 +35,7 @@ class Phool_Header_HeaderField
 	 * The case-normalized name of the header.
 	 * @return string
 	 */
-	public function getName()
+	public function name()
 	{
 		return $this->_name;
 	}
@@ -44,7 +44,7 @@ class Phool_Header_HeaderField
 	 * The value of the header.
 	 * @return string
 	 */
-	public function getValue()
+	public function value()
 	{
 		return $this->_value;
 	}
@@ -57,8 +57,8 @@ class Phool_Header_HeaderField
 	{
 		return sprintf(
 			'%s: %s%s',
-			$this->getName(),
-			$this->getValue(),
+			$this->name(),
+			$this->value(),
 			self::CRLF
 		);
 	}

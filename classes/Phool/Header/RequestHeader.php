@@ -13,7 +13,7 @@ class Phool_Header_RequestHeader
 	/**
 	 * @return Phool_Header[]
 	 */
-	public function getHeaders()
+	public function headers()
 	{
 		return $this->_headers;
 	}
@@ -33,7 +33,7 @@ class Phool_Header_RequestHeader
 	 */
 	public function addHeader($header)
 	{
-		$this[$header->getName()] = $header;
+		$this[$header->name()] = $header;
 	}
 
 	/**
@@ -52,7 +52,7 @@ class Phool_Header_RequestHeader
 	 * @return Phool_Header
 	 * @throws Phool_Exception if named header does not exist.
 	 */
-	public function getHeader($name)
+	public function header($name)
 	{
 		if (!isset($this[$name]))
 			throw new Phool_Exception("Header '$name' not set");
@@ -66,7 +66,7 @@ class Phool_Header_RequestHeader
 	 * @param string $name
 	 * @throws Phool_Exception if named header does not exist.
 	 */
-	public function getHeaderValue($name)
+	public function headerValue($name)
 	{
 		return $this[$name];
 	}
@@ -104,7 +104,7 @@ class Phool_Header_RequestHeader
 		$name = $this->_normalizeHeaderName($offset);
 		$header = is_object($newval) ?
 			$newval : new Phool_Header_HeaderField($name, $newval);
-		$value = $header->getValue();
+		$value = $header->value();
 
 		$this->_headers[$name] = $header;
 		parent::offsetSet($name, $value);

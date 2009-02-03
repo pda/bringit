@@ -16,7 +16,7 @@ class Phool_RequestDispatcherInternetTest extends UnitTestCase
 		$dispatcher = new Phool_RequestDispatcher();
 		$response = $dispatcher->dispatch($request);
 
-		$responseBody = $response->getEntityBody()->getContentString();
+		$responseBody = $response->entityBody()->contentString();
 
 		$this->assertWantedPattern(
 			'#Example Web Page#',
@@ -42,7 +42,7 @@ class Phool_RequestDispatcherInternetTest extends UnitTestCase
 		$dispatcher = new Phool_RequestDispatcher();
 		$response = $dispatcher->dispatch($request);
 
-		$responseBody = $response->getEntityBody()->getContentString();
+		$responseBody = $response->entityBody()->contentString();
 
 		$this->assertWantedPattern(
 			'#The requested method PUT is not allowed#',

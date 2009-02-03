@@ -11,7 +11,7 @@ class Phool_DnsResolver
 	 * @return array
 	 * @throw Phool_Exception_DnsError
 	 */
-	public function getHostsByName($hostname)
+	public function hostsByName($hostname)
 	{
 		if (!$hosts = gethostbynamel($hostname))
 			throw new Phool_Exception_DnsException(
@@ -26,7 +26,7 @@ class Phool_DnsResolver
 	 * @return string
 	 * @throw Phool_Exception_DnsError
 	 */
-	public function getHostByName($hostname)
+	public function hostByName($hostname)
 	{
 		if (!$host = gethostbyname($hostname))
 			throw new Phool_Exception_DnsException(

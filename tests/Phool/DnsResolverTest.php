@@ -6,7 +6,7 @@ class Phool_DnsResolverTest extends UnitTestCase
 	{
 		$resolver = new Phool_DnsResolver();
 		$this->assertEqual(
-			$resolver->getHostByName('localhost'),
+			$resolver->hostByName('localhost'),
 			'127.0.0.1'
 		);
 	}
@@ -15,7 +15,7 @@ class Phool_DnsResolverTest extends UnitTestCase
 	{
 		$resolver = new Phool_DnsResolver();
 		$this->assertEqual(
-			$resolver->getHostsByName('localhost'),
+			$resolver->hostsByName('localhost'),
 			array('127.0.0.1')
 		);
 	}

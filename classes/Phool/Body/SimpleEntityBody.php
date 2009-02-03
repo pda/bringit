@@ -23,9 +23,9 @@ class Phool_Body_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_Body_EntityBody::getContentLength()
+	 * @see Phool_Body_EntityBody::contentLength()
 	 */
-	public function getContentLength()
+	public function contentLength()
 	{
 		// TODO: optimize for normal file streams using filesize()
 		// TODO: cache result? - but something may write more to the stream
@@ -37,9 +37,9 @@ class Phool_Body_SimpleEntityBody
 	}
 
 	/* (non-phpdoc)
-	 * @see Phool_Body_EntityBody::getContentStream()
+	 * @see Phool_Body_EntityBody::contentStream()
 	 */
-	public function getContentStream()
+	public function contentStream()
 	{
 		return $this->_stream;
 	}
@@ -66,7 +66,7 @@ class Phool_Body_SimpleEntityBody
 	/**
 	 * @return string
 	 */
-	public function getContentString()
+	public function contentString()
 	{
 		$this->loadContent();
 		$string = '';

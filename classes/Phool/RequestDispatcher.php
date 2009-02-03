@@ -8,12 +8,12 @@ class Phool_RequestDispatcher
 	 */
 	public function dispatch($request)
 	{
-		$url = $request->getUrl();
+		$url = $request->url();
 		$dnsResolver = new Phool_DnsResolver();
 		$failCount = 0;
 		$exceptions = array();
 
-		foreach ($dnsResolver->getHostsByName($url->getHost()) as $ipAddress)
+		foreach ($dnsResolver->hostsByName($url->host()) as $ipAddress)
 		{
 			try
 			{

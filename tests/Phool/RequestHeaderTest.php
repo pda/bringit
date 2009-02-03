@@ -15,11 +15,11 @@ class Phool_RequestHeaderTest extends PhoolTestCase
 		$header->addHeader(new Phool_Header_HeaderField('Three', 'III'));
 		$header->removeHeader('Three');
 
-		$this->assertEqual($header->getHeaderValue('One'), 'I');
-		$this->assertEqual($header->getHeaderValue('Two'), 'II');
+		$this->assertEqual($header->headerValue('One'), 'I');
+		$this->assertEqual($header->headerValue('Two'), 'II');
 		try
 		{
-			$header->getHeaderValue('Three');
+			$header->headerValue('Three');
 			$this->fail('Phool_Exception should be thrown');
 		}
 		catch (Phool_Exception $e)
@@ -27,7 +27,7 @@ class Phool_RequestHeaderTest extends PhoolTestCase
 			$this->pass('Phool_Exception should be thrown');
 		}
 
-		$headers = $header->getHeaders();
+		$headers = $header->headers();
 		$this->assertIsA($headers, 'array');
 		$this->assertEqual(count($headers), 2);
 	}

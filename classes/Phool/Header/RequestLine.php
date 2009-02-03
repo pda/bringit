@@ -26,7 +26,7 @@ class Phool_Header_RequestLine
 	/**
 	 * @return string
 	 */
-	public function getReqestMethod()
+	public function reqestMethod()
 	{
 		return $this->_requestMethod;
 	}
@@ -34,7 +34,7 @@ class Phool_Header_RequestLine
 	/**
 	 * @return string
 	 */
-	public function getReqestUri()
+	public function reqestUri()
 	{
 		return $this->_requestUri;
 	}
@@ -42,7 +42,7 @@ class Phool_Header_RequestLine
 	/**
 	 * @return string
 	 */
-	public function getHttpVersion()
+	public function httpVersion()
 	{
 		return $this->_httpVersion;
 	}
@@ -53,9 +53,9 @@ class Phool_Header_RequestLine
 	public function __toString()
 	{
 		return sprintf("%s %s HTTP/%s\r\n",
-			$this->getReqestMethod(),
-			$this->getReqestUri(),
-			$this->getHttpVersion()
+			$this->reqestMethod(),
+			$this->reqestUri(),
+			$this->httpVersion()
 		);
 	}
 

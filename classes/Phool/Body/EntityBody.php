@@ -11,11 +11,11 @@ interface Phool_Body_EntityBody
 	 * @see {@link http://tools.ietf.org/html/rfc1945#section-10.4}
 	 * @return int
 	 */
-	public function getContentLength();
+	public function contentLength();
 
 	/**
 	 * The file-stream of the EntityBody content.
 	 * @return resource stream
 	 */
-	public function getContentStream();
+	public function contentStream();
 }

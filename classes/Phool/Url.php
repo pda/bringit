@@ -35,7 +35,7 @@ class Phool_Url
 	 * Scheme, either http or https
 	 * @return string
 	 */
-	public function getScheme()
+	public function scheme()
 	{
 		if (!$this->hasScheme()) throw new Phool_Exception(sprintf(
 			"URL '%s' has no scheme component",
@@ -58,7 +58,7 @@ class Phool_Url
 	 * Hostname (without port information) e.g. example.org
 	 * @return string
 	 */
-	public function getHost()
+	public function host()
 	{
 		if (!$this->hasHost()) throw new Phool_Exception(sprintf(
 			"URL '%s' has no host component",
@@ -81,15 +81,15 @@ class Phool_Url
 	 * Host, including port unless it is the default port for the scheme.
 	 * @return string
 	 */
-	public function getHostWithPort()
+	public function hostWithPort()
 	{
 		if ($this->hasPort() && (!$this->hasDefaultPort() || !$this->isPortDefault()))
 		{
-			return $this->getHost() . ':' . $this->getPort();
+			return $this->host() . ':' . $this->port();
 		}
 		else
 		{
-			return $this->getHost();
+			return $this->host();
 		}
 	}
 
@@ -97,7 +97,7 @@ class Phool_Url
 	 * Path component (after host, before query string delimiter '?')
 	 * @return string
 	 */
-	public function getPath()
+	public function path()
 	{
 		return empty($this->_fragments['path']) ?
 			'/' : $this->_fragments['path'];
@@ -107,7 +107,7 @@ class Phool_Url
 	 * Query string (after query delimiter '?', before fragment delimiter '#')
 	 * @return string
 	 */
-	public function getQueryString()
+	public function queryString()
 	{
 		if (!$this->hasQueryString()) throw new Phool_Exception(sprintf(
 			"URL '%s' has no query string",
@@ -130,7 +130,7 @@ class Phool_Url
 	 * Fragment string (after fragment delimiter '#')
 	 * @return string
 	 */
-	public function getFragmentString()
+	public function fragmentString()
 	{
 		if (!$this->hasFragmentString()) throw new Phool_Exception(sprintf(
 			"URL '%s' has no fragment string",
@@ -153,10 +153,10 @@ class Phool_Url
 	 * TCP port number, defaults to 80 for HTTP and 443 for HTTPS.
 	 * @return int
 	 */
-	public function getPort()
+	public function port()
 	{
 		return empty($this->_fragments['port']) ?
-			$this->getDefaultPort() : $this->_fragments['port'];
+			$this->defaultPort() : $this->_fragments['port'];
 	}
 
 	/**
@@ -171,14 +171,14 @@ class Phool_Url
 	 * The default TCP port for the scheme of the URL
 	 * @return int or null
 	 */
-	public function getDefaultPort()
+	public function defaultPort()
 	{
 		if (!$this->hasDefaultPort()) throw new Phool_Exception(sprintf(
 			"No default port for URL '%s'",
 			$this->_inputString
 		));
 
-		$scheme = $this->getScheme();
+		$scheme = $this->scheme();
 		if ($scheme == 'http') return 80;
 		elseif ($scheme == 'https') return 443;
 		else throw new Phool_Exception("No default port for scheme '$scheme'");
@@ -198,18 +198,18 @@ class Phool_Url
 	 */
 	public function isPortDefault()
 	{
-		return $this->getPort() == $this->getDefaultPort();
+		return $this->port() == $this->defaultPort();
 	}
 
 	/**
 	 * The URL components after the host.
 	 * @return string
 	 */
-	public function getHostRelativeUrl()
+	public function hostRelativeUrl()
 	{
-		$url = $this->getPath();
-		if ($this->hasQueryString()) $url .= '?' . $this->getQueryString();
-		if ($this->hasFragmentString()) $url .= '#' . $this->getFragmentString();
+		$url = $this->path();
+		if ($this->hasQueryString()) $url .= '?' . $this->queryString();
+		if ($this->hasFragmentString()) $url .= '#' . $this->fragmentString();
 		return $url;
 	}
 
@@ -217,12 +217,12 @@ class Phool_Url
 	 * The URL components after the scheme
 	 * @return string
 	 */
-	public function getSchemeRelativeUrl()
+	public function schemeRelativeUrl()
 	{
 		return sprintf(
 			'//%s%s',
-			$this->getHostWithPort(),
-			$this->getHostRelativeUrl()
+			$this->hostWithPort(),
+			$this->hostRelativeUrl()
 		);
 	}
 
@@ -233,12 +233,12 @@ class Phool_Url
 	public function __toString()
 	{
 		if ($this->hasScheme())
-			return $this->getScheme() . ':' . $this->getSchemeRelativeUrl();
+			return $this->scheme() . ':' . $this->schemeRelativeUrl();
 
 		if ($this->hasHost())
-			return $this->getSchemeRelativeUrl();
+			return $this->schemeRelativeUrl();
 
-		return $this->getHostRelativeUrl();
+		return $this->hostRelativeUrl();
 	}
 
 }

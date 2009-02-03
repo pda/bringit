@@ -25,7 +25,7 @@ class Phool_Header_ResponseHeader
 	 * @see http://tools.ietf.org/html/rfc2616#section-6.1
 	 * @return Phool_Header_ResponseStatusLine
 	 */
-	public function getStatusLine()
+	public function statusLine()
 	{
 		return $this->_statusLine;
 	}
@@ -33,7 +33,7 @@ class Phool_Header_ResponseHeader
 	/**
 	 * @return Phool_Header[]
 	 */
-	public function getHeaders()
+	public function headers()
 	{
 		return $this->_headers;
 	}

@@ -8,13 +8,13 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$request = $builder->setUrl('http://example.org/')->createRequest();
 
 		$this->assertIsA($request, 'Phool_Request');
-		$this->assertEqual($request->getRequestMethod(), Phool_Request::METHOD_GET);
-		$this->assertEqual($request->getUrl()->__toString(), 'http://example.org/');
+		$this->assertEqual($request->requestMethod(), Phool_Request::METHOD_GET);
+		$this->assertEqual($request->url()->__toString(), 'http://example.org/');
 		$this->assertFalse($request->hasEntityBody(), 'should not have entity body');
 
-		$this->assertEqual($request->getRequestLine()->__toString(), "GET / HTTP/1.1\r\n");
-		$this->assertIsA($request->getHeader(), 'Phool_Header_RequestHeader');
-		$this->assertEqual($request->getHeader()->getHeaderValue('Host'), 'example.org');
+		$this->assertEqual($request->requestLine()->__toString(), "GET / HTTP/1.1\r\n");
+		$this->assertIsA($request->header(), 'Phool_Header_RequestHeader');
+		$this->assertEqual($request->header()->headerValue('Host'), 'example.org');
 	}
 
 	public function testBuildWithoutUrlThrowsException()
@@ -30,7 +30,7 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$request = $builder->setUrl('http://example.org/')->createRequest();
 
 		$this->expectException('Phool_Exception');
-		$request->getEntityBody();
+		$request->entityBody();
 	}
 
 	public function testPutRequest()
@@ -54,12 +54,12 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 
 		$this->assertIsA($request, 'Phool_Request');
 
-		$this->assertEqual($request->getRequestMethod(), Phool_Request::METHOD_PUT);
-		$this->assertReference($request->getUrl(), $url);
-		$this->assertReference($request->getHeader(), $header);
+		$this->assertEqual($request->requestMethod(), Phool_Request::METHOD_PUT);
+		$this->assertReference($request->url(), $url);
+		$this->assertReference($request->header(), $header);
 		$this->assertTrue($request->hasEntityBody(), 'should have entity body');
-		$this->assertReference($request->getEntityBody(), $entityBody);
-		$this->assertEqual($request->getRequestLine()->__toString(), "PUT /blarg HTTP/1.1\r\n");
+		$this->assertReference($request->entityBody(), $entityBody);
+		$this->assertEqual($request->requestLine()->__toString(), "PUT /blarg HTTP/1.1\r\n");
 		$this->assertEqual($header['Host'], 'example.org:81');
 	}
 }

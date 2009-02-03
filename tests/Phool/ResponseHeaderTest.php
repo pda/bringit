@@ -5,8 +5,8 @@ class Phool_ResponseHeaderTest extends PhoolTestCase
 	public function testEmpty()
 	{
 		$header = new Phool_Header_ResponseHeader(null, array());
-		$this->assertEqual($header->getHeaders(), array());
-		$this->assertNull($header->getStatusLine());
+		$this->assertEqual($header->headers(), array());
+		$this->assertNull($header->statusLine());
 	}
 
 	public function testBasicUsage()
@@ -17,6 +17,6 @@ class Phool_ResponseHeaderTest extends PhoolTestCase
 		);
 
 		$header = new Phool_Header_ResponseHeader(null, $headers);
-		$this->assertEqual($header->getHeaders(), $headers);
+		$this->assertEqual($header->headers(), $headers);
 	}
 }

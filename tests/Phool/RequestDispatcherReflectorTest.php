@@ -16,7 +16,7 @@ class Phool_RequestDispatcherReflectorTest extends UnitTestCase
 		$dispatcher = new Phool_RequestDispatcher();
 		$response = $dispatcher->dispatch($request);
 
-		$responseBody = $response->getEntityBody()->getContentString();
+		$responseBody = $response->entityBody()->contentString();
 
 		$this->assertWantedPattern(
 			'#^GET / HTTP/1.1\r\n#',
@@ -47,7 +47,7 @@ class Phool_RequestDispatcherReflectorTest extends UnitTestCase
 		$dispatcher = new Phool_RequestDispatcher();
 		$response = $dispatcher->dispatch($request);
 
-		$responseBody = $response->getEntityBody()->getContentString();
+		$responseBody = $response->entityBody()->contentString();
 
 		$host = self::TESTHOST;
 		$this->assertEqual(

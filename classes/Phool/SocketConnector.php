@@ -20,11 +20,11 @@ class Phool_SocketConnector
 
 	public function handleRequest($request)
 	{
-		$url = $request->getUrl();
+		$url = $request->url();
 
 		$socket = fsockopen(
 			$this->_ipAddress,
-			$url->getPort(),
+			$url->port(),
 			$errno,
 			$errstr,
 			self::SOCKET_TIMEOUT_OPEN
@@ -35,7 +35,7 @@ class Phool_SocketConnector
 			throw new Phool_Exception_ConnectionException(sprintf(
 				"Unable to open socket to %s:%d for %s (%d: %s)",
 				$this->_ipAddress,
-				$url->getPort(),
+				$url->port(),
 				$url,
 				$errno,
 				$errstr
@@ -45,18 +45,18 @@ class Phool_SocketConnector
 		// write request line to socket
 		fwrite(
 			$socket,
-			$request->getRequestLine()->__toString()
+			$request->requestLine()->__toString()
 		);
 
 		// write headers to socket
 		fwrite(
 			$socket,
-			$request->getHeader()->__toString()
+			$request->header()->__toString()
 		);
 
 		if ($request->hasEntityBody())
 		{
-			$bodyStream = $request->getEntityBody()->getContentStream();
+			$bodyStream = $request->entityBody()->contentStream();
 
 			while (!feof($bodyStream))
 			{
