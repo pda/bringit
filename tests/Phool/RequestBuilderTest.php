@@ -44,13 +44,12 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$entityBodyFactory = new Phool_EntityBodyFactory();
 		$entityBody = $entityBodyFactory->createFromString('testing');
 
-		$builder
+		$request = $builder
 			->method(Phool_Request::METHOD_PUT)
 			->url($url)
 			->header($header)
-			->body($entityBody);
-
-		$request = $builder->create();
+			->body($entityBody)
+			->create();
 
 		$this->assertIsA($request, 'Phool_Request');
 
