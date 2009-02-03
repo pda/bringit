@@ -27,7 +27,7 @@ class Phool_Request
 	 * @param string $requestMethod
 	 * @param Phool_Url $url
 	 * @param Phool_Header_RequestHeader $header
-	 * @param Phool_Body_EntityBody $entityBody
+	 * @param Phool_EntityBody $entityBody
 	 */
 	public function __construct($requestMethod, $url, $header, $entityBody)
 	{
@@ -90,7 +90,7 @@ class Phool_Request
 	/**
 	 * The Entity Body of the Request.
 	 * @see http://tools.ietf.org/html/rfc2616#section-7.2
-	 * @return Phool_Body_EntityBody
+	 * @return Phool_EntityBody
 	 */
 	public function entityBody()
 	{

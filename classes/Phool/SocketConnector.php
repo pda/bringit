@@ -70,7 +70,7 @@ class Phool_SocketConnector
 		$parser = new Phool_Header_ResponseHeaderParser();
 		$responseHeader = $parser->parseStream($socket);
 
-		$entityBodyFactory = new Phool_Body_EntityBodyFactory();
+		$entityBodyFactory = new Phool_EntityBodyFactory();
 		$entityBody = $entityBodyFactory->createFromStream($socket);
 
 		return new Phool_Response($request, $responseHeader, $entityBody);

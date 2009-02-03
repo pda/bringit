@@ -4,7 +4,7 @@ require_once('mock_objects.php');
 
 Mock::generate('Phool_Request', 'MockRequest');
 Mock::generate('Phool_Header_ResponseHeader', 'ResponseHeader');
-Mock::generate('Phool_Body_EntityBody', 'MockEntityBody');
+Mock::generate('Phool_EntityBody', 'MockEntityBody');
 
 class Phool_ResponseTest extends UnitTestCase
 {

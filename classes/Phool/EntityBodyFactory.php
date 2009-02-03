@@ -3,7 +3,7 @@
 /**
  * Creates EntityBody instances from different types of content source.
  */
-class Phool_Body_EntityBodyFactory
+class Phool_EntityBodyFactory
 {
 	/**
 	 * Creates an EntityBody using a stream as the content source.
@@ -11,7 +11,7 @@ class Phool_Body_EntityBodyFactory
 	 */
 	public function createFromStream($contentStream)
 	{
-		return new Phool_Body_SimpleEntityBody($contentStream);
+		return new Phool_EntityBody($contentStream);
 	}
 
 	/**

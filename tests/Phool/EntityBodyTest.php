@@ -1,10 +1,10 @@
 <?php
 
-class Phool_Body_EntityBodyTest extends UnitTestCase
+class Phool_EntityBodyTest extends UnitTestCase
 {
 	public function testStringEntityBodyBasicUsage()
 	{
-		$factory = new Phool_Body_EntityBodyFactory();
+		$factory = new Phool_EntityBodyFactory();
 		$body = $factory->createFromString('test content');
 
 		$this->assertEqual($body->contentLength(), 12);
@@ -16,7 +16,7 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		fwrite($stream, 'test stream data');
 		rewind($stream);
 
-		$factory = new Phool_Body_EntityBodyFactory();
+		$factory = new Phool_EntityBodyFactory();
 		$body = $factory->createFromStream($stream);
 
 		$this->assertEqual($body->contentLength(), 16);
@@ -37,7 +37,7 @@ class Phool_Body_EntityBodyTest extends UnitTestCase
 		fwrite($stream, 'test stream data');
 		fseek($stream, 9, SEEK_SET);
 
-		$factory = new Phool_Body_EntityBodyFactory();
+		$factory = new Phool_EntityBodyFactory();
 		$body = $factory->createFromStream($stream);
 
 		$this->assertEqual($body->contentLength(), 7);

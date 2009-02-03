@@ -26,7 +26,7 @@ class Phool_RequestDispatcherInternetTest extends UnitTestCase
 
 	public function testDispatchPutRequest()
 	{
-		$entityBodyFactory = new Phool_Body_EntityBodyFactory();
+		$entityBodyFactory = new Phool_EntityBodyFactory();
 		$body = $entityBodyFactory->createFromString('test content');
 
 		$header = new Phool_Header_RequestHeader();

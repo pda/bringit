@@ -1,11 +1,13 @@
 <?php
 
 /**
- * An entity body which uses a stream to get its body,
+ * The body of an HTTP request.
+ * @see {@link http://tools.ietf.org/html/rfc1945#section-7.2}
+ *
+ * This implementation uses a stream to get its body,
  * and does not support content encoding.
  */
-class Phool_Body_SimpleEntityBody
-	implements Phool_Body_EntityBody
+class Phool_EntityBody
 {
 	private
 		$_stream,
@@ -22,8 +24,10 @@ class Phool_Body_SimpleEntityBody
 		$this->_initialPosition = ftell($stream);
 	}
 
-	/* (non-phpdoc)
-	 * @see Phool_Body_EntityBody::contentLength()
+	/**
+	 * The size of the Entity-Body, in decimal number of octets.
+	 * @see {@link http://tools.ietf.org/html/rfc1945#section-10.4}
+	 * @return int
 	 */
 	public function contentLength()
 	{
@@ -36,8 +40,9 @@ class Phool_Body_SimpleEntityBody
 		return $endPosition - $initialPosition;
 	}
 
-	/* (non-phpdoc)
-	 * @see Phool_Body_EntityBody::contentStream()
+	/**
+	 * The file-stream of the EntityBody content.
+	 * @return resource stream
 	 */
 	public function contentStream()
 	{

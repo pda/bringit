@@ -42,7 +42,7 @@ class Phool_RequestBuilder
 	}
 
 	/**
-	 * @param Phool_Body_EntityBody
+	 * @param Phool_EntityBody
 	 * @chainable
 	 */
 	public function body($entityBody)

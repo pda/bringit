@@ -14,7 +14,7 @@ class Phool_Response
 	/**
 	 * @param Phool_Url $request
 	 * @param Phool_Header_ResponseHeader $header
-	 * @param Phool_Body_EntityBody $entityBody
+	 * @param Phool_EntityBody $entityBody
 	 */
 	public function __construct($request, $header, $entityBody)
 	{
@@ -53,7 +53,7 @@ class Phool_Response
 	/**
 	 * The Entity Body of the Response.
 	 * @see http://tools.ietf.org/html/rfc2616#section-7.2
-	 * @return Phool_Body_EntityBody
+	 * @return Phool_EntityBody
 	 */
 	public function entityBody()
 	{

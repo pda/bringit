@@ -41,7 +41,7 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$header = new Phool_Header_RequestHeader();
 		$header['Content-Type'] = 'text/plain';
 
-		$entityBodyFactory = new Phool_Body_EntityBodyFactory();
+		$entityBodyFactory = new Phool_EntityBodyFactory();
 		$entityBody = $entityBodyFactory->createFromString('testing');
 
 		$builder
