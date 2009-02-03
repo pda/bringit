@@ -8,10 +8,10 @@ class Phool_RequestDispatcherInternetTest extends UnitTestCase
 	{
 		$builder = new Phool_RequestBuilder();
 		$request = $builder
-			->setRequestMethod(Phool_Request::METHOD_GET)
-			->setUrl('http://'.self::TESTHOST.'/')
-			->setHeader(new Phool_Header_RequestHeader())
-			->createRequest();
+			->method(Phool_Request::METHOD_GET)
+			->url('http://'.self::TESTHOST.'/')
+			->header(new Phool_Header_RequestHeader())
+			->create();
 
 		$dispatcher = new Phool_RequestDispatcher();
 		$response = $dispatcher->dispatch($request);
@@ -33,11 +33,11 @@ class Phool_RequestDispatcherInternetTest extends UnitTestCase
 
 		$builder = new Phool_RequestBuilder();
 		$request = $builder
-			->setRequestMethod(Phool_Request::METHOD_PUT)
-			->setUrl('http://'.self::TESTHOST.'/test')
-			->setHeader($header)
-			->setEntityBody($body)
-			->createRequest();
+			->method(Phool_Request::METHOD_PUT)
+			->url('http://'.self::TESTHOST.'/test')
+			->header($header)
+			->body($body)
+			->create();
 
 		$dispatcher = new Phool_RequestDispatcher();
 		$response = $dispatcher->dispatch($request);

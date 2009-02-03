@@ -2,20 +2,20 @@
 
 /**
  * A collection of header fields belonging to an HTTP request.
- * Header names/keys are case insensitive and unique in the collection.
+ * Header names/keys are case insensitive and unique.
  * Provides ArrayAccess for header name/value pairs.
  */
 class Phool_Header_RequestHeader
 	extends ArrayIterator
 {
-	private $_headers = array();
+	private $_fields = array();
 
 	/**
 	 * @return Phool_Header[]
 	 */
-	public function headers()
+	public function fields()
 	{
-		return $this->_headers;
+		return $this->_fields;
 	}
 
 	/**
@@ -28,12 +28,12 @@ class Phool_Header_RequestHeader
 	}
 
 	/**
-	 * Adds a header, overwriting any existing header of the same name.
+	 * Adds a header field, overwriting any existing field of the same name.
 	 * @param Phool_Header
 	 */
-	public function addHeader($header)
+	public function addField($field)
 	{
-		$this[$header->name()] = $header;
+		$this[$field->name()] = $field;
 	}
 
 	/**
@@ -49,15 +49,15 @@ class Phool_Header_RequestHeader
 
 	/**
 	 * @param string $name
-	 * @return Phool_Header
+	 * @return Phool_Header_HeaderField
 	 * @throws Phool_Exception if named header does not exist.
 	 */
-	public function header($name)
+	public function field($name)
 	{
 		if (!isset($this[$name]))
 			throw new Phool_Exception("Header '$name' not set");
 
-		return $this->_headers[$name];
+		return $this->_fields[$name];
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Phool_Header_RequestHeader
 	 * @param string $name
 	 * @throws Phool_Exception if named header does not exist.
 	 */
-	public function headerValue($name)
+	public function value($name)
 	{
 		return $this[$name];
 	}
@@ -75,7 +75,7 @@ class Phool_Header_RequestHeader
 	 * Removes the header of the given name if it exists.
 	 * @param string $name
 	 */
-	public function removeHeader($name)
+	public function remove($name)
 	{
 		unset($this[$name]);
 	}
@@ -106,14 +106,14 @@ class Phool_Header_RequestHeader
 			$newval : new Phool_Header_HeaderField($name, $newval);
 		$value = $header->value();
 
-		$this->_headers[$name] = $header;
+		$this->_fields[$name] = $header;
 		parent::offsetSet($name, $value);
 	}
 
 	public function offsetUnset($offset)
 	{
 		$name = $this->_normalizeHeaderName($offset);
-		unset($this->_headers[$name]);
+		unset($this->_fields[$name]);
 		parent::offsetUnset($name);
 	}
 

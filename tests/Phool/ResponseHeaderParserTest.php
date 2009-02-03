@@ -9,7 +9,7 @@ class Phool_ResponseHeaderParserTest extends PhoolTestCase
 			"HTTP/1.1 200 OK\r\ncontent-length: 1024\r\n"
 		);
 
-		$this->assertEqual($header->headers(), array(
+		$this->assertEqual($header->fields(), array(
 			new Phool_Header_HeaderField('Content-Length', '1024'),
 		));
 

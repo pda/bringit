@@ -2,22 +2,22 @@
 
 /**
  * The header of an HTTP response, including the status line and header fields.
- * Header field names/keys are case insensitive and non-unique in the .
+ * Header field names/keys are case insensitive and non-unique.
  */
 class Phool_Header_ResponseHeader
 {
 	private
-		$_headers = array(),
+		$_fields = array(),
 		$_statusLine;
 
 	/**
 	 * @param Phool_Header_ResponseStatusLine, may be null
-	 * @param Phool_Header[] $headers
+	 * @param Phool_Header_HeaderField[] $fields
 	 */
-	public function __construct($statusLine, $headers)
+	public function __construct($statusLine, $fields)
 	{
 		$this->_statusLine = $statusLine;
-		$this->_headers = $headers;
+		$this->_fields = $fields;
 	}
 
 	/**
@@ -31,10 +31,10 @@ class Phool_Header_ResponseHeader
 	}
 
 	/**
-	 * @return Phool_Header[]
+	 * @return Phool_Header_HeaderField[]
 	 */
-	public function headers()
+	public function fields()
 	{
-		return $this->_headers;
+		return $this->_fields;
 	}
 }

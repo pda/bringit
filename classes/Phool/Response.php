@@ -13,7 +13,7 @@ class Phool_Response
 
 	/**
 	 * @param Phool_Url $request
-	 * @param Phool_Header $header
+	 * @param Phool_Header_ResponseHeader $header
 	 * @param Phool_Body_EntityBody $entityBody
 	 */
 	public function __construct($request, $header, $entityBody)
@@ -35,7 +35,7 @@ class Phool_Response
 	/**
 	 * @return Phool_Header_ResponseHeader
 	 */
-	public function responseHeader()
+	public function header()
 	{
 		return $this->_header;
 	}

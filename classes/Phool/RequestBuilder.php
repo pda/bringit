@@ -15,7 +15,7 @@ class Phool_RequestBuilder
 	 * @param Phool_RequestMethod
 	 * @chainable
 	 */
-	public function setRequestMethod($requestMethod)
+	public function method($requestMethod)
 	{
 		$this->_requestMethod = $requestMethod;
 		return $this;
@@ -25,7 +25,7 @@ class Phool_RequestBuilder
 	 * @param Phool_Url
 	 * @chainable
 	 */
-	public function setUrl($url)
+	public function url($url)
 	{
 		$this->_url = is_string($url) ? new Phool_Url($url) : $url;
 		return $this;
@@ -35,7 +35,7 @@ class Phool_RequestBuilder
 	 * @param Phool_Header
 	 * @chainable
 	 */
-	public function setHeader($header)
+	public function header($header)
 	{
 		$this->_header = $header;
 		return $this;
@@ -45,7 +45,7 @@ class Phool_RequestBuilder
 	 * @param Phool_Body_EntityBody
 	 * @chainable
 	 */
-	public function setEntityBody($entityBody)
+	public function body($entityBody)
 	{
 		$this->_entityBody = $entityBody;
 		return $this;
@@ -55,7 +55,7 @@ class Phool_RequestBuilder
 	 * Builds the request based on the data passed to the setter methods.
 	 * @return Phool_Request
 	 */
-	public function createRequest()
+	public function create()
 	{
 		return new Phool_Request(
 			$this->_requestMethod,

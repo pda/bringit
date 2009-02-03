@@ -26,7 +26,7 @@ class Phool_Request
 	/**
 	 * @param string $requestMethod
 	 * @param Phool_Url $url
-	 * @param Phool_Header $header
+	 * @param Phool_Header_RequestHeader $header
 	 * @param Phool_Body_EntityBody $entityBody
 	 */
 	public function __construct($requestMethod, $url, $header, $entityBody)

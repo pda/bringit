@@ -5,7 +5,7 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 	public function testBasicGetRequest()
 	{
 		$builder = new Phool_RequestBuilder();
-		$request = $builder->setUrl('http://example.org/')->createRequest();
+		$request = $builder->url('http://example.org/')->create();
 
 		$this->assertIsA($request, 'Phool_Request');
 		$this->assertEqual($request->requestMethod(), Phool_Request::METHOD_GET);
@@ -14,20 +14,20 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 
 		$this->assertEqual($request->requestLine()->__toString(), "GET / HTTP/1.1\r\n");
 		$this->assertIsA($request->header(), 'Phool_Header_RequestHeader');
-		$this->assertEqual($request->header()->headerValue('Host'), 'example.org');
+		$this->assertEqual($request->header()->value('Host'), 'example.org');
 	}
 
 	public function testBuildWithoutUrlThrowsException()
 	{
 		$builder = new Phool_RequestBuilder();
 		$this->expectException('Phool_Exception');
-		$builder->createRequest();
+		$builder->create();
 	}
 
 	public function testRequestBuiltWithoutEntityBodyThrowsException()
 	{
 		$builder = new Phool_RequestBuilder();
-		$request = $builder->setUrl('http://example.org/')->createRequest();
+		$request = $builder->url('http://example.org/')->create();
 
 		$this->expectException('Phool_Exception');
 		$request->entityBody();
@@ -45,12 +45,12 @@ class Phool_RequestBuilderTest extends PhoolTestCase
 		$entityBody = $entityBodyFactory->createFromString('testing');
 
 		$builder
-			->setRequestMethod(Phool_Request::METHOD_PUT)
-			->setUrl($url)
-			->setHeader($header)
-			->setEntityBody($entityBody);
+			->method(Phool_Request::METHOD_PUT)
+			->url($url)
+			->header($header)
+			->body($entityBody);
 
-		$request = $builder->createRequest();
+		$request = $builder->create();
 
 		$this->assertIsA($request, 'Phool_Request');
 
