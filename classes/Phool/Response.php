@@ -8,7 +8,7 @@ class Phool_Response
 {
 	private
 		$_request,
-		$_header;
+		$_header,
 		$_entityBody;
 
 	/**
