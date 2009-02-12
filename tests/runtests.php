@@ -3,7 +3,7 @@
 require(dirname(__FILE__).'/../include/init.php');
 
 $basedir = realpath(dirname(__FILE__).'/..');
-Phool_ClassLoader::addIncludePath(array(
+Bringit_ClassLoader::addIncludePath(array(
 	"$basedir/lib/simpletest",
 	"$basedir/tests"
 ));
@@ -12,7 +12,7 @@ if (in_array('--help', $argv))
 {
 	echo <<<EOM
 
-CLI test runner for Phool.
+CLI test runner for Bringit.
 
 Available options:
 
