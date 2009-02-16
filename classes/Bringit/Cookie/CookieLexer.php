@@ -39,7 +39,7 @@ class Bringit_Cookie_CookieLexer
 		// state within double-quoted string
 		self::STATE_DOUBLEQUOTEDVALUE => array(
 			self::T_VALUE => '(?:(?:\\\")?[^"](?:\\\")?)+',
-			self::T_DOUBLEQUOTE => '(?<!")"',
+			self::T_DOUBLEQUOTE => '(?<!\\\)"',
 		),
 	);
 
@@ -57,44 +57,51 @@ class Bringit_Cookie_CookieLexer
 		),
 	);
 
-	private $_state = self::STATE_ROOT;
+	private
+		$_state = self::STATE_ROOT,
+		$_input;
 
 	/**
-	 * Tokenizes the value of a Set-Cookie or Set-Cookie2 header.
+	 * @param string
+	 */
+	public function __construct($string)
+	{
+		$this->_input = $string;
+	}
+
+	/**
+	 * The next token of a Set-Cookie or Set-Cookie2 header.
 	 * @param string
 	 * @return array
 	 */
-	public function tokenize($string)
+	public function next()
 	{
-		$tokens = array();
+		if (strlen($this->_input) == 0) return false;
 
-		// TODO: refactor to be less loopy, more iteratory.
-		while (strlen($string))
+		foreach ($this->_stateTokens() as $token => $reBody)
 		{
-			foreach ($this->_stateTokens() as $token => $reBody)
+			$re = "#^{$reBody}#";
+
+			if (preg_match($re, $this->_input, $matches))
 			{
-				$re = "#^{$reBody}#";
+				$match = $matches[0];
+				$this->_input = substr($this->_input, strlen($match));
 
-				if (preg_match($re, $string, $matches))
-				{
-					$string = substr($string, strlen($matches[0]));
+				// TODO: genericize discarded tokens
+				if ($token == self::T_WHITESPACE) continue;
 
-					if ($token == self::T_WHITESPACE) continue(2);
+				// notify for state transitions etc
+				$this->_notify($token);
 
-					$tokens []= array($token, $matches[0]);
-
-					// notify for state transitions etc
-					$this->_notify($token);
-
-					continue(2);
-				}
+				return array($token, $match);
 			}
-
-			throw new Bringit_Cookie_LexerException(
-				"State '{$this->_state}': no matching tokens for $string");
 		}
 
-		return $tokens;
+		throw new Bringit_Cookie_LexerException(sprintf(
+			"State '%s' has no matching tokens for: %s",
+			$this->_state,
+			$this->_input
+		));
 	}
 
 	/**
