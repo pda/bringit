@@ -1,6 +1,6 @@
 <?php
 
-class Bringit_Cookie2ParserTest extends UnitTestCase
+class Bringit_CookieLexerTest extends UnitTestCase
 {
 	public function testMinimalCookie()
 	{
