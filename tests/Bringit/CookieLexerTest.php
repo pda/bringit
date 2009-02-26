@@ -34,7 +34,7 @@ class Bringit_CookieLexerTest extends UnitTestCase
 	public function testWithAttributes()
 	{
 		$tokens = $this->_tokenize(
-			'example="example cookie"; Path=/; Domain=".example.org"; Port = 80');
+			'example="example cookie"; Path="/"; Domain=".example.org"; Port = 80');
 
 		$this->_assertTokens($tokens, array(
 			'name{example}',
@@ -45,7 +45,9 @@ class Bringit_CookieLexerTest extends UnitTestCase
 			'semicolon{;}',
 			'name{Path}',
 			'equals{=}',
+			'doublequote{"}',
 			'value{/}',
+			'doublequote{"}',
 			'semicolon{;}',
 			'name{Domain}',
 			'equals{=}',
@@ -134,10 +136,29 @@ class Bringit_CookieLexerTest extends UnitTestCase
 		));
 	}
 
-	public function testUnlexable()
+	public function testUnlexableSpaceInName()
 	{
 		$this->expectException('Bringit_Cookie_LexerException');
-		$this->_tokenize('this is not a cookie');
+		$this->_tokenize('this is = "not a cookie"');
+	}
+
+	public function testUnlexableUnquotedValueWithSpaces()
+	{
+		$this->expectException('Bringit_Cookie_LexerException');
+		$this->_tokenize('this = is not a cookie');
+	}
+
+	public function testUnlexableSemicolonBeforeValue()
+	{
+		$this->expectException('Bringit_Cookie_LexerException');
+		$this->_tokenize('this = ;');
+	}
+
+	public function testUnlexableCommaBeforeValue()
+	{
+		$this->expectException('Bringit_Cookie_LexerException');
+		$t = $this->_tokenize('this = ,');
+		$this->dump($t);
 	}
 
 	// ----------------------------------------

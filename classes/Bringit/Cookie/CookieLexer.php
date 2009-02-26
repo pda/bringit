@@ -18,40 +18,56 @@ class Bringit_Cookie_CookieLexer
 
 	// states
 	const STATE_ROOT = 'root';
+	const STATE_NAME = 'name';
 	const STATE_ASSIGNMENT = 'assignment';
 	const STATE_DOUBLEQUOTEDVALUE = 'doublequotedvalue';
+	const STATE_VALUE = 'value';
 
 	private $_stateTokens = array(
 		// root state, expects a name
 		self::STATE_ROOT => array(
 			self::T_WHITESPACE => '\s+',
 			self::T_NAME => '[$\w]\w*',
+		),
+		// state after name, expects assignment operator
+		self::STATE_NAME => array(
+			self::T_WHITESPACE => '\s+',
 			self::T_EQUALS => '=',
 		),
 		// state which expects a value
 		self::STATE_ASSIGNMENT => array(
 			self::T_WHITESPACE => '\s+',
-			self::T_SEMICOLON => ';',
-			self::T_COMMA => ',',
 			self::T_DOUBLEQUOTE => '"',
-			self::T_VALUE => '[^\s;]+',
+			self::T_VALUE => '[^\CX()<>@,;:\\"/\[\]?={}\s\t]+',
 		),
 		// state within double-quoted string
 		self::STATE_DOUBLEQUOTEDVALUE => array(
 			self::T_VALUE => '(?:(?:\\\")?[^"](?:\\\")?)+',
 			self::T_DOUBLEQUOTE => '(?<!\\\)"',
 		),
+		// state after value
+		self::STATE_VALUE => array(
+			self::T_WHITESPACE => '\s+',
+			self::T_SEMICOLON => ';',
+			self::T_COMMA => ',',
+		),
 	);
 
 	private $_stateTransitions = array(
 		self::STATE_ROOT => array(
+			self::T_NAME => self::STATE_NAME,
+		),
+		self::STATE_NAME => array(
 			self::T_EQUALS => self::STATE_ASSIGNMENT,
 		),
 		self::STATE_DOUBLEQUOTEDVALUE => array(
-			self::T_DOUBLEQUOTE => self::STATE_ASSIGNMENT,
+			self::T_DOUBLEQUOTE => self::STATE_VALUE,
 		),
 		self::STATE_ASSIGNMENT => array(
 			self::T_DOUBLEQUOTE => self::STATE_DOUBLEQUOTEDVALUE,
+			self::T_VALUE => self::STATE_VALUE,
+		),
+		self::STATE_VALUE => array(
 			self::T_SEMICOLON => self::STATE_ROOT,
 			self::T_COMMA => self::STATE_ROOT,
 		),
